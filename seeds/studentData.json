@@ -1,0 +1,22 @@
+[
+  {
+    "firstName": "Student",
+    "lastName": "One",
+    "teacher_id": [1, 3]
+  },
+  {
+    "firstName": "Student",
+    "lastName": "Two",
+    "teacher_id": [2, 3]
+  },
+  {
+    "firstName": "Student",
+    "lastName": "Three",
+    "teacher_id": [3, 1]
+  },
+  {
+    "firstName": "Student",
+    "lastName": "Four",
+    "teacher_id": [1, 2]
+  }
+]

@@ -1,0 +1,3 @@
+DROP DATABASE iep_db;
+
+CREATE DATABASE iep_db;

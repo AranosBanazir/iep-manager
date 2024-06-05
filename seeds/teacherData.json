@@ -1,0 +1,26 @@
+[
+  {
+    "firstName": "Tessa",
+    "lastName": "Saiia",
+    "manager_id": 1,
+    "role_id": 1,
+    "email": "TS@school.com",
+    "password": "asdfasdfasdf"
+  },
+  {
+    "firstName": "Christy",
+    "lastName": "Saiia",
+    "manager_id": 1,
+    "role_id": 2,
+    "email": "CS@school.com",
+    "password": "asdfasdfasdf"
+  },
+  {
+    "firstName": "Roxanna",
+    "lastName": "Hause",
+    "manager_id": 1,
+    "role_id": 1,
+    "email": "RH@school.com",
+    "password": "asdfasdfasdf"
+  }
+]

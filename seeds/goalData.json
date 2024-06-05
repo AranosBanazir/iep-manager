@@ -1,0 +1,23 @@
+[
+  {
+    "title": "Goal One",
+    "student_id": 1,
+    "notes": "Goal is being met",
+    "description": "This is the First Goal",
+    "beingMet": true
+  },
+  {
+    "title": "Goal Two",
+    "student_id": 2,
+    "notes": "Goal is not being met",
+    "description": "This is the Second Goal",
+    "beingMet": false
+  },
+  {
+    "title": "Goal Three",
+    "student_id": 2,
+    "notes": "Goal is not being met",
+    "description": "This is the Third Goal",
+    "beingMet": false
+  }
+]
