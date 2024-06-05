@@ -25,7 +25,7 @@ Teacher.init(
       allowNull: false,
       //refrences Teacher id
       references: {
-        model: Teacher,
+        model: 'teacher',
         key: "id",
       },
     },
@@ -38,7 +38,6 @@ Teacher.init(
         key: "id",
       },
     },
-
     email: {
       type: DataTypes.STRING,
       allowNull: false,
