@@ -5,15 +5,22 @@ const { Student, Teacher, Goal } = require("../../models");
 
 router.get("/", async (req, res) => {
   const students = await Student.findAll();
-
   const parsedStudents = students.map((student) =>
     student.get({ plain: true })
   );
 
   for (const student of parsedStudents) {
-    for (const teacher of student.teacher_id){
-        n
+    const teacherArray = [];
+    for (const teacher of student.teacher_id) {
+      const teacherConvert = await Teacher.findByPk(teacher, {
+        attributes: {
+          exclude: ["password"],
+        },
+      });
+
+      teacherArray.push(teacherConvert);
     }
+    student.teacher_id = teacherArray;
   }
 
   res.send(parsedStudents);
