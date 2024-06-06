@@ -2,7 +2,11 @@ const sequelize = require("../config/connection.js");
 const bcrypt = require("bcrypt");
 const { Model, DataTypes } = require("sequelize");
 
-class Teacher extends Model {}
+class Teacher extends Model {
+  checkPassword(loginPw) {
+    return bcrypt.compareSync(loginPw, this.password);
+  }
+}
 
 Teacher.init(
   {
@@ -22,7 +26,7 @@ Teacher.init(
     },
     manager_id: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      defaultValue: 1,
       //refrences Teacher id
       references: {
         model: 'teacher',
