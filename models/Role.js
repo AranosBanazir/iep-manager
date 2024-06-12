@@ -19,6 +19,10 @@ Role.init(
       type: DataTypes.STRING,
       allowNull: true,
     },
+    description: {
+      type: DataTypes.STRING,
+      allowNull: true
+    }
   },
   {
     sequelize,

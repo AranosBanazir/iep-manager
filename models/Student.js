@@ -19,11 +19,6 @@ Student.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    //each int in the array references a teacger handled on the backend
-    teacher_id: {
-      type: DataTypes.ARRAY(DataTypes.INTEGER),
-      defaultValue: [],
-    },
   },
   {
     sequelize,

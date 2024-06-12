@@ -1,1 +1,9 @@
-<p>Profile</p>
+<p>
+    {{this.firstName}}
+    {{#each this.students}}
+        {{> student-card}}
+    {{/each}}
+
+
+</p>
+

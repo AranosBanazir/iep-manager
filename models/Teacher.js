@@ -26,10 +26,9 @@ Teacher.init(
     },
     manager_id: {
       type: DataTypes.INTEGER,
-      defaultValue: 1,
       //refrences Teacher id
       references: {
-        model: 'teacher',
+        model: Teacher,
         key: "id",
       },
     },

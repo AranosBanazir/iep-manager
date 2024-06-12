@@ -1,9 +1,9 @@
 const sequelize = require("../config/connection.js");
 const { Model, DataTypes } = require("sequelize");
 
-class Goal extends Model {}
+class Note extends Model {}
 
-Goal.init(
+Note.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -23,22 +23,26 @@ Goal.init(
         key: "id",
       },
     },
-    description: {
-      type: DataTypes.STRING,
-      allowNull: true,
+    goal_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: 'goal',
+            key: 'id'
+        }
     },
-    beingMet: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: true,
-    },
+    body: {
+        type: DataTypes.TEXT,
+        allowNull: false
+    }
   },
   {
     sequelize,
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "goal",
+    modelName: "note",
   }
 );
 
-module.exports = Goal;
+module.exports = Note;
