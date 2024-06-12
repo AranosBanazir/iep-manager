@@ -15,7 +15,7 @@
   },
   {
     "title": "Goal Three",
-    "student_id": 2,
+    "student_id": 3,
     "notes": "Goal is not being met",
     "description": "This is the Third Goal",
     "beingMet": false

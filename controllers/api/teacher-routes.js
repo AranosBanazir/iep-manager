@@ -1,14 +1,21 @@
 const router = require("express").Router();
-const { Teacher, Student, Goal, Role } = require("../../models");
+const { Teacher, Student, Goal, Role, Note } = require("../../models");
 
 //routes for: /api/teachers
 
 router.get("/", async (req, res) => {
   let teachers = await Teacher.findAll({
     attributes: {
-      exclude: ["password"],
+      exclude: ["password", "role_id", "manager"],
     },
-    include: [{ model: Role }],
+    include: [
+      { model: Role , attributes: ['name', 'description', 'abbrev']},
+      {model: Student,
+        include: [{model: Goal,
+          include: [{model: Note}]
+        }]
+      }
+  ],
   });
 
   teachers = teachers.map((teacher) => teacher.get({ plain: true }));
@@ -53,5 +60,23 @@ router.get("/logout", (req, res) => {
   // res.render("home");
   res.status(200).send();
 });
+
+
+router.get('/:id', async (req, res)=>{
+  const teacher = await Teacher.findByPk(req.params.id,{
+    attributes: {
+      exclude: ['password']
+    }
+  })
+
+  res.status(200).json(teacher)
+})
+
+
+router.get('/role', async (req, res) =>{
+  const roles = await Role.findAll()
+
+  res.send(roles)
+})
 
 module.exports = router;

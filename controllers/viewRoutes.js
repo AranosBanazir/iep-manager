@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Teacher, Student, Goal, Role } = require("../models");
+const { Teacher, Student, Goal, Role, Caseload, Note } = require("../models");
 const { authenticate } = require("../utils/middleware/auth");
 
 router.get("/", async (req, res) => {
@@ -26,20 +26,20 @@ router.get("/", async (req, res) => {
 
 router.get("/profile", authenticate, async (req, res) => {
   let teacher = await Teacher.findByPk(req.session.teacher_id, {
-    attributes: {
-      exclude: ["password"],
-    },
-    include: [
-      {
-        model: Student,
-        exclude: ["teacher_id", "TeacherStudent"],
+      attributes: {
+        exclude: ["password", "role_id", "manager"],
       },
+      include: [
+        { model: Role , attributes: ['name', 'description', 'abbrev']},
+        {model: Student,
+          include: [{model: Goal,
+            include: [{model: Note}]
+          }]
+        }
     ],
-  });
+    })
   teacher = teacher.get({ plain: true });
-  console.log(teacher);
-  res.send(teacher);
-  // res.render("profile", teacher);
+  res.render("profile", teacher);
 });
 
 module.exports = router;

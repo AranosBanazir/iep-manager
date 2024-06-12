@@ -1,9 +1,42 @@
-<p>
-    {{this.firstName}}
-    {{#each this.students}}
-        {{> student-card}}
-    {{/each}}
+
+{{!-- pseudo added to header --}}
+<div class="flex items-center justify-center flex-col">
+    <h1 class="font-bold text-xl">
+        {{this.firstName}}  {{this.lastName}}
+    </h1>
+    <p>{{this.role.name}} ({{this.role.abbrev}})</p>
+</div>
 
 
-</p>
+
+
+
+<div class="bg-blue min-h-[80%] grid grid-cols-2 justify-center mt-5">
+
+<div >
+   
+</div>
+
+<div>
+    <h2>Students</h2>
+    <div role="tablist" class="tabs tabs-lifted">
+        {{#each this.students}}
+            <input type="radio" name="{{firstName}}-tab" role="tab" class="tab" aria-label="{{lastName}}"/>
+            <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
+                {{firstName}} {{lastName}}
+
+                {{#each this.goals}}
+                    <h2>{{title}}</h2>
+                    <p>{{description}}</p>
+                {{/each}}
+                
+            </div>
+        {{/each}}
+    </div>
+</div>
+
+</div>
+
+
+
 
