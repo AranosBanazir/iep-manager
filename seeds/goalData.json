@@ -4,20 +4,23 @@
     "student_id": 1,
     "notes": "Goal is being met",
     "description": "This is the First Goal",
-    "beingMet": true
+    "beingMet": true,
+    "created_by": 1
   },
   {
     "title": "Goal Two",
-    "student_id": 2,
+    "student_id": 1,
     "notes": "Goal is not being met",
     "description": "This is the Second Goal",
-    "beingMet": false
+    "beingMet": false,
+    "created_by": 1
   },
   {
     "title": "Goal Three",
-    "student_id": 3,
+    "student_id": 1,
     "notes": "Goal is not being met",
     "description": "This is the Third Goal",
-    "beingMet": false
+    "beingMet": false,
+    "created_by": 1
   }
 ]

@@ -2,26 +2,11 @@ const router = require("express").Router();
 const { Teacher, Student, Goal, Role, Caseload, Note } = require("../models");
 const { authenticate } = require("../utils/middleware/auth");
 
-router.get("/", async (req, res) => {
-  console.log(req.session);
-  if (req.session.logged_in) {
-    let teacher = await Teacher.findByPk(req.session.teacher_id, {
-      attributes: {
-        exclude: ["password"],
-      },
-      include: [
-        {
-          model: Student,
-          exclude: ["teacher_id", "TeacherStudent"],
-          include: [{ model: Goal }],
-        },
-      ],
-    });
-    teacher = teacher.get({ plain: true });
-    res.render("profile", teacher);
-    return;
-  }
-  res.render("home");
+router.get("/", authenticate, async (req, res) => {
+  // console.log(req.session);
+ 
+    res.redirect('/profile')
+  
 });
 
 router.get("/profile", authenticate, async (req, res) => {
@@ -41,5 +26,24 @@ router.get("/profile", authenticate, async (req, res) => {
   teacher = teacher.get({ plain: true });
   res.render("profile", teacher);
 });
+
+router.get('/goal/:id', authenticate, async (req, res)=>{
+  let goal = await Goal.findByPk(req.params.id, {
+    include: [
+      {model: Note, attributes: ['title', 'body']},
+      {model: Teacher, attributes: ['firstName', 'lastName']}
+  
+  ]
+  })
+  
+  goal = goal.get({plain: true})
+
+  console.log(goal)
+  res.render('single-goal', {
+    logged_in: req.session.logged_in,
+    goal
+  })
+})
+
 
 module.exports = router;

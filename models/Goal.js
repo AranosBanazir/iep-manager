@@ -1,5 +1,5 @@
 const sequelize = require("../config/connection.js");
-const { Model, DataTypes } = require("sequelize");
+const { Model, DataTypes, INTEGER } = require("sequelize");
 
 class Goal extends Model {}
 
@@ -31,6 +31,14 @@ Goal.init(
       type: DataTypes.BOOLEAN,
       defaultValue: true,
     },
+    created_by: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'teacher',
+        key: 'id'
+      },
+      allowNull: false,
+    }
   },
   {
     sequelize,

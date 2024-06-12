@@ -28,6 +28,9 @@ Student.belongsToMany(Teacher, {
 Student.hasMany(Goal, {foreignKey: 'student_id'})
 Goal.belongsTo(Student, {foreignKey: 'student_id'})
 
+Teacher.hasMany(Goal, {foreignKey: 'created_by'})
+Goal.belongsTo(Teacher, {foreignKey: 'created_by'})
+
 
 
 module.exports = {
