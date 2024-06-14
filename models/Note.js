@@ -11,10 +11,6 @@ Note.init(
       allowNull: false,
       autoIncrement: true,
     },
-    title: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
     student_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -38,7 +34,6 @@ Note.init(
   },
   {
     sequelize,
-    timestamps: false,
     freezeTableName: true,
     underscored: true,
     modelName: "note",

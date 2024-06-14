@@ -13,13 +13,13 @@
 
 <div class="bg-blue min-h-[80%] grid grid-cols-2 justify-center mt-5">
 
-<div >
+<div id="management-console">
    
 </div>
 
 <div>
     <h2>Students</h2>
-    <div role="tablist" class="tabs tabs-lifted" id="student-tabs">
+    <div role="tablist" class="tabs tabs-boxed" id="student-tabs">
         {{#each this.students}}
             <input type="radio" name="{{firstName}}-tab" role="tab" class="tab" aria-label="{{lastName}}"/>
             <div role="tabpanel" class="tab-content bg-base-100 border-base-300 rounded-box p-6">
@@ -38,7 +38,7 @@
                         <h2 class="card-title">{{title}}</h2>
                         <p>{{description}}</p>
                         <div class="card-actions justify-end">
-                            <button class="btn btn-primary" data-goal-id="{{id}}">More Info</button>
+                            <a href="/goal/{{id}}" class="btn btn-primary" data-goal-id="{{id}}">More Info</a>
                         </div>
                     </div>
                 </div>

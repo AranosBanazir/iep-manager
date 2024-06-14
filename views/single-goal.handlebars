@@ -1,8 +1,42 @@
 <div class="flex flex-col justify-center items-center">
 
-    <h1 class="font-bold text-7xl">{{goal.title}}</h1>
+    <h1 class="font-bold text-5xl">{{goal.title}}</h1>
+    <h2>Created by: {{fullName goal.teacher}}</h2>
+    <h2>Created for: {{fullName goal.student}}</h2>
     
-       
+    <div id="inputDiv" class="mt-10">
+        <form class="flex flex-col">
+            <label for="title">Title:</label>
+            <input type="text" name="title" value="{{goal.title}}">
+
+            <label for="description">Description:</label>
+            <textarea name="description">{{goal.description}}</textarea>
+
+            <button class="btn btn-success">Update Goal</button>
+        </form>
+    </div>
+
+    <button class="btn btn-success"  onclick="noteModal.showModal()">Add a Note</button>
+
+<dialog id="noteModal" class="modal modal-bottom sm:modal-middle">
+  <div class="modal-box">
+    <h3 class="font-bold text-lg">New Note</h3>
+    <form id="noteForm" class="flex flex-col">
+        <textarea name="body" id="noteBodyInput" rows="5" required></textarea>
+
+        <button class="btn self-end mt-4">Save Note</button>
+    </form>
+    <div class="modal-action">
+
+    </div>
+  </div>
+</dialog>
+
+    <div id="notes-div" class="grid grid-cols-3 gap-4">
+        {{#each goal.notes}}
+            {{> note-card}}
+        {{/each}}
+    </div>
 
 
 </div>

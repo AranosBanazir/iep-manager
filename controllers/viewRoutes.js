@@ -30,8 +30,9 @@ router.get("/profile", authenticate, async (req, res) => {
 router.get('/goal/:id', authenticate, async (req, res)=>{
   let goal = await Goal.findByPk(req.params.id, {
     include: [
-      {model: Note, attributes: ['title', 'body']},
-      {model: Teacher, attributes: ['firstName', 'lastName']}
+      {model: Note, attributes: ['createdAt', 'body']},
+      {model: Teacher, attributes: ['firstName', 'lastName']},
+      {model: Student, attributes: ['firstName', 'lastName']}
   
   ]
   })

@@ -12,8 +12,8 @@ Role.belongsTo(Teacher, {foreignKey: 'id'})
 Teacher.hasMany(Teacher, {foreignKey: 'id'})
 Teacher.belongsTo(Teacher, {foreignKey: 'id'})
 
-Goal.hasMany(Note, {foreignKey: 'id'})
-Note.belongsTo(Goal, {foreignKey: 'id'})
+Goal.hasMany(Note, {foreignKey: 'goal_id'})
+Note.belongsTo(Goal, {foreignKey: 'goal_id'})
 
 Teacher.belongsToMany(Student, {
   through: Caseload,
